@@ -18,12 +18,12 @@ const handleFourOhFour = (req, res) => {
   res.status(404).send("I couldn't find what you're looking for.");
 };
 
-const handleHomepage = (req, res) => {
-  res.status(200).render("pages/homepage", { users: users });
+const handleSignin = (req, res) => {
+  res.status(200).render("pages/signin", {});
 };
 
-const handleSignin = (req, res) => {
-  res.send("ok");
+const handleHomepage = (req, res) => {
+  res.status(200).render("pages/homepage", { users: users });
 };
 
 const handleProfilePage = (req, res) => {
