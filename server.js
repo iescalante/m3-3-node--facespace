@@ -19,16 +19,22 @@ const handleFourOhFour = (req, res) => {
 };
 
 const handleSignin = (req, res) => {
-  res.status(200).render("pages/signin", {});
+  if (currentUser.name) {
+    res.status(307).redirect("/");
+  } else {
+    res.status(200).render("pages/signin", { currentUser: currentUser });
+  }
 };
 
 const handleName = (req, res) => {
   const firstName = req.query.firstName;
-  console.log(firstName);
-  if (firstName) {
-    res.status(200).redirect(`/users/${users._id}`);
+  const user = findUser(firstName);
+  //console.log(firstName);
+  if (user) {
+    currentUser = user;
+    res.status(200).redirect(`users/${user._id}`);
   } else {
-    res.status(404).send("I couldn't find what you're looking for.");
+    res.status(404).redirect("/signin");
   }
 };
 
