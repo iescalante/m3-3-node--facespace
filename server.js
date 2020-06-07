@@ -6,7 +6,13 @@ const morgan = require("morgan");
 const { users } = require("./data/users");
 
 let currentUser = {};
-
+//utilities
+const findUser = (value) => {
+  return users.find((user) => Object.values(user).includes(value)) || null;
+};
+const getFriends = (arr) => {
+  return users.filter((user) => arr.includes(user._id));
+};
 // declare the 404 function
 const handleFourOhFour = (req, res) => {
   res.status(404).send("I couldn't find what you're looking for.");
@@ -17,11 +23,12 @@ const handleHomepage = (req, res) => {
 };
 
 const handleProfilePage = (req, res) => {
-  const id = req.params.id;
-  let findUser = users.find((user) => user._id === req.params.id);
-  //console.log(findUser);
+  const _id = req.params._id;
+  const user = findUser(_id);
+
   res.status(200).render("pages/profile", {
-    user: findUser,
+    user: user,
+    friends: getFriends(user.friends),
   });
 };
 // -----------------------------------------------------
@@ -34,7 +41,7 @@ express()
 
   // endpoints
   .get("/", handleHomepage)
-  .get("/users/:id", handleProfilePage)
+  .get("/users/:_id", handleProfilePage)
   // a catchall endpoint that will send the 404 message.
   .get("*", handleFourOhFour)
 
