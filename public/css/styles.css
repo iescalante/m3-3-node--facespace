@@ -7,7 +7,8 @@
 @import "components/profile-page.css";
 
 /* Place all of your custom CSS below. 😃 */
-.signin-link {
+.signin,
+.hello {
   position: absolute;
   top: 5px;
   right: 20px;
