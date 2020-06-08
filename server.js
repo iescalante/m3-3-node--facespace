@@ -48,6 +48,7 @@ const handleProfilePage = (req, res) => {
 
   res.status(200).render("pages/profile", {
     user: user,
+    currentUser: currentUser,
     friends: getFriends(user.friends),
   });
 };
