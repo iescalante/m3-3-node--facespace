@@ -39,7 +39,9 @@ const handleName = (req, res) => {
 };
 
 const handleHomepage = (req, res) => {
-  res.status(200).render("pages/homepage", { users: users });
+  res
+    .status(200)
+    .render("pages/homepage", { users: users, currentUser: currentUser });
 };
 
 const handleProfilePage = (req, res) => {

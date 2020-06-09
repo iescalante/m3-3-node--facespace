@@ -13,3 +13,6 @@
 .homepage__all--user img {
   width: 120px;
 }
+.homepage__all--user a:hover > img {
+  border: 4px solid var(--primary-color);
+}
