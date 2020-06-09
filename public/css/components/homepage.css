@@ -16,3 +16,16 @@
 .homepage__all--user a:hover > img {
   border: 4px solid var(--primary-color);
 }
+
+.ribbon {
+  position: absolute;
+  transform: rotate(45deg);
+  border: 1px solid transparent;
+  background-color: var(--primary-color);
+  font-family: sans-serif;
+  size: 11px;
+  margin: 15px 0px 0px 67px;
+}
+.text {
+  color: white;
+}

@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const { users } = require("./data/users");
 
 let currentUser = {};
-//utilities
+//utility functions
 const findUser = (value) => {
   return users.find((user) => Object.values(user).includes(value)) || null;
 };
@@ -20,7 +20,7 @@ const handleFourOhFour = (req, res) => {
 
 const handleSignin = (req, res) => {
   if (currentUser.name) {
-    res.status(307).redirect("/");
+    res.redirect("/");
   } else {
     res.status(200).render("pages/signin", { currentUser: currentUser });
   }
